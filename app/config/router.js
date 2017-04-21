@@ -1,10 +1,21 @@
 import React from 'react';
-import { TabNavigator } from 'react-navigation';
+import { TabNavigator, StackNavigator } from 'react-navigation';
 
 import Home from '../components/Home';
 import Barcode from '../components/Barcode';
 import Calendar from '../components/Calendar';
 import Maps from '../components/Maps';
+import Recycable from '../components/Recycable';
+
+export const BarcodeStack = StackNavigator({
+  Barcode: {
+    screen: Barcode,
+  },
+  Recycable: {
+    screen: Recycable,
+    path: 'recyable/:code'
+  }
+})
 
 export const Tabs = TabNavigator({
   Home: {
@@ -14,7 +25,7 @@ export const Tabs = TabNavigator({
     }
   },
   Barcode: {
-    screen: Barcode,
+    screen: BarcodeStack,
     navigationOptions: {
       tabBarLabel: 'Barcode'
     }
